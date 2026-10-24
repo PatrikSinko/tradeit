@@ -6,32 +6,26 @@ komentare s uputama i ogledne <details> blokove te prije predaje izbrišite ovu
 napomenu. Nemojte kopirati nastavni primjer kao rezultat svojeg projekta.
 -->
 
-# [Naziv aplikacije]
+# [TradeIt]
 
-<details>
-<summary>Zašto je ovaj odjeljak važan</summary>
-
-Započnite README nazivom svojeg projekta i sažetim opisom njegove svrhe. Naziv projekta ne mora sam po sebi objašnjavati čemu projekt služi, ali opis uz naziv treba novom čitatelju omogućiti da brzo razumije što aplikacija radi.
-
-</details>
-
-[U jednoj rečenici navedite što aplikacija omogućuje svojim korisnicima.]
+**Najam predmeta i opreme od ljudi u blizini.** TradeIt povezuje vlasnike predmeta s osobama kojima su oni privremeno potrebni te objedinjuje pronalazak, dogovor najma, evidenciju stanja i korisničku podršku.
 
 **Projekt na kolegiju:** Ovu je aplikaciju razvio studentski tim u sklopu kolegija [Programsko inženjerstvo](https://www.fer.unizg.hr/predmet/proinz) na Fakultetu elektrotehnike i računarstva Sveučilišta u Zagrebu (FER).
 
 ## Opis aplikacije
 
-[U dvije ili tri rečenice objasnite problem, ciljane korisnike i glavnu korist svoje aplikacije. Trenutačne funkcionalnosti navedite odvojeno od planiranih; opišite stvarni opseg umjesto obećanih mogućnosti.]
+Osobi kojoj jednom treba grafički kalkulator, alat ili kamera kupnja može biti nepotrebna, a pronalazak najmodavca zahtijeva dogovor na više mjesta. TradeIt predlaže katalog najma s cijenama i raspoloživosti, dogovorom između korisnika te fotografijama pri preuzimanju i povratu. Očekivana korist je lakša ponovna uporaba predmeta; ušteda vremena, novca ili utjecaj na okoliš još nisu mjereni.
 
 **Ključne funkcionalnosti**
 
-- [Reprezentativna funkcionalnost koju korisnici mogu isprobati]
-- [Druga reprezentativna funkcionalnost]
-- [Po želji dodatna funkcionalnost; nemojte kopirati cijeli popis zahtjeva]
+- Mogućnost objavljivanja objekta ili usluge za najam
+- Mogućnost pregleda objava
+- Mogućnost iznajmljivanja traženog predmeta ili usluge
 
 Za potpuni opseg, zahtjeve, oblikovanje i dokaze ispitivanja pogledajte [docs](docs/Home.md).
 
 <a id="deployment"></a>
+
 ## Postavljanje (engl. deployment)
 
 <!-- UPUTA: Ovaj odjeljak opisuje već postavljenu aplikaciju koju se  može otvoriti i isprobati bez lokalnog pokretanja izvornog koda.
@@ -48,6 +42,7 @@ Za Iteraciju 1 i Završni pregled navedite konkretne podatke. Provjerite vodi li
 [Vodič za postavljanje i pokretanje](docs/6-Postavljanje-instalacija-i-konfiguracija.md) opisuje smještaj aplikacije (engl. hosting) koji tim stvarno koristi. Tim može koristiti Render ili drugu platformu koju ste dogovorili s asistentom/demonstratorom.
 
 <a id="quick-start"></a>
+
 ## Brzi početak / instalacija
 
 <!-- Obavezno od Demo 1 nadalje. Zamijenite mjesta za unos naredbama koje je drugi član tima uspješno provjerio nakon čistog kloniranja repozitorija. Detaljne upute za administraciju držite u projektnoj dokumentaciji u direktoriju docs/. -->
@@ -69,50 +64,42 @@ cd [repository directory]
 
 ## Tehnologije
 
-Navedite nekoliko tehnologija i vanjskih usluga koje bitno određuju kako vaša aplikacija radi. Za svaku navedite njezinu konkretnu ulogu i jedan razlog ili ograničenje važno za projekt. Alat za razvoj ili ispitivanje uključite samo ako je njegova uloga važna za razumijevanje načina na koji je projekt izrađen ili provjeren. Nemojte prepisivati popis ovisnosti (engl. dependencies), statistiku programskih jezika ni popis razvojnih okruženja i komunikacijskih alata. Tablicu provjerite prema stvarnom repozitoriju i pokrenutoj aplikaciji; potrebne verzije i konfiguraciju dokumentirajte u vodiču za instalaciju.
-
-| Tehnologija ili alat | Uloga u ovom projektu | Razlog uporabe ili važno ograničenje |
-| --- | --- | --- |
-| [Naziv] | [Što radi u ovoj aplikaciji] | [Razlog ili ograničenje specifično za projekt] |
-
-<details>
-<summary><strong>Primjer: objašnjenje ključnih tehnoloških odluka</strong></summary>
-
-**Primjer — CrisisMap:**
-
-| Tehnologija ili alat | Uloga u ovom projektu | Razlog uporabe ili važno ograničenje |
-| --- | --- | --- |
-| React | Prikazuje obrazac za prijavu i kartu kriznih događaja u pregledniku. | Karta i poslane prijave mogu se ažurirati bez ponovnog učitavanja cijele stranice. |
-| PostgreSQL | Pohranjuje prijave, lokacije i njihove odnose. | Zapisi o prijavama moraju ostati povezani s autorima i lokacijama; promjene sheme zahtijevaju migracije baze podataka (engl. database migrations). |
-| Usluga kartografskih pločica (engl. map tile service) | Omogućuje prikaz karte u pregledniku. | Karta ovisi o vanjskoj usluzi; aplikacija mora imati definirano ponašanje i kada kartografske pločice nisu dostupne. |
-
-**Analiza primjera:** Svaki redak opisuje ulogu ili posljedicu konkretne tehnologije u ovoj aplikaciji. Verzije paketa pripadaju datotekama s ovisnostima projekta; verzije izvršnog okruženja i konfiguracija važna za postavljanje pripadaju vodiču za instalaciju. Važne kompromise u oblikovanju (engl. design trade-offs) objasnite na stranici arhitekture u direktoriju `docs/` umjesto da ovdje ponavljate cijeli zapis odluke. Navodite samo usluge koje vaš tim stvarno integrira.
-
-</details>
+| Tehnologija ili alat               | Uloga                                                  | Status i razlog                                                              |
+| ---------------------------------- | ------------------------------------------------------ | ---------------------------------------------------------------------------- |
+| HTML5, CSS, JavaScript             | Zasloni, stilovi, navigacija i lokalne interakcije     | Planirani klijentski dio; raniji dizajn još nije prenesen u ovaj repozitorij |
+| Node.js i npm                      | Izvođenje oglednog poslužitelja i naredbi iz predloška | Postojeći npm testovi samo ispisuju poruke; jsdom testovi nisu u ovom ZIP-u  |
+| Python + FastAPI                   | Planirani HTTP API i poslovna pravila                  | Prijedlog za raspravu; API još nije implementiran                            |
+| PostgreSQL                         | Planirana zajednička pohrana i integritet rezervacija  | Prijedlog; shema i migracije još nisu primijenjene                           |
+| SQLAlchemy + Alembic               | Planirano preslikavanje modela i migracije             | Uvesti uz prvi vertikalni tijek API-ja                                       |
+| OAuth/OIDC, Google Maps, AI servis | Planirane prijava, lokacija i provjera oglasa          | Vanjske integracije još nisu povezane; pružatelje i troškovnik potvrditi     |
+| GitHub + GitHub Actions            | Verzije, pregled promjena i automatizirane provjere    | Repozitorij je naveden; workflow je predložak bez stvarne testne provjere    |
 
 <a id="team-members"></a>
+
 ## Članovi tima
 
-| Član | Glavna uloga ili doprinos |
-| --- | --- |
-| [Ime] | [Uloga ili doprinos] |
-| [Ime] | [Uloga ili doprinos] |
-
-Uloge se tijekom projekta mogu mijenjati. Repozitorij i dogovoreni alat za praćenje zadataka (engl. task tracker) služe kao dodatni dokazi timskog rada.
+| Član            | Oznaka | Glavna uloga ili doprinos      | Prvi konkretan zadatak                                            |
+| --------------- | ------ | ------------------------------ | ----------------------------------------------------------------- |
+| Adam Winkler    | R1     | Frontend i UI                  | Povezati katalog s budućim API-jem; provjeriti prikaz na mobitelu |
+| Leon Zorko      | R2     | Dokumentacija i koordinacija   | Potvrditi zahtjeve, održavati issues i stvarne zapisnike          |
+| Patrik Šinko    | R3     | Baza podataka                  | Model korisnika, oglasa i rezervacija te početne migracije        |
+| Pavao Knez      | R4     | Autentikacija i AI             | OIDC prijava, serverske ovlasti; zatim AI provjera oglasa         |
+| Viktor Lazić    | R5     | Vanjske usluge                 | Pohrana fotografija i integracija lokacije                        |
+| Lukas Davorija  | R6     | API i integracija              | Katalog, ponuda cijene i zahtjev za najam                         |
+| Matej Miličević | R7     | Deploy, testiranje i fullstack | CI, razvojna okolina i prvo postavljanje                          |
 
 ## Doprinos projektu
 
-[Ako je primjenjivo, ukratko opišite kako se evidentiraju zadaci i nedostaci te kako se pregledavaju promjene koda i gdje se nalazi aktualna evidencija zadataka. Ako tim održava `CONTRIBUTING.md`, ovdje postavite poveznicu umjesto ponavljanja pravila. Nemojte stvarati tu datoteku samo zato da biste popunili ovaj odjeljak.]
+Za praćenje zadataka navedena je Jira ploča ispod. GitHub sadrži izvorni kod i dokumentaciju. Predloženo je povezivati promjene sa zadacima i provesti pregled drugog člana prije spajanja; stvarni ritam i pravila tim tek treba evidentirati u [pregledu aktivnosti](docs/CONTRIBUTING.md).
+
+Poveznica na Jiru: https://trade-it.atlassian.net/jira/software/projects/SCRUM/summary
 
 <a id="license"></a>
 
-**Status licence:** [Navedite licencu i postavite poveznicu na projektnu datoteku `LICENSE` ili izričito navedite da nije dodijeljena licenca koja dopušta javnu ponovnu uporabu. Namjeravani opseg provjerite s timom; nemojte prepisivati licencu predloška ove dokumentacije kao licencu svoje aplikacije.]
-
-Dokumentacijski predložak kolegija sadrži otvorene obrazovne sadržaje (engl. Open Educational Resources, OER) i licenciran je licencom Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. Ta licenca **ne određuje automatski licencu studentske aplikacije**; tim treba jasno navesti licencu svojeg projekta u prethodnom retku i datoteci `LICENSE`, ako je primjenjivo.
-
-Kod trećih strana, skupovi podataka, slike, ikone i drugi sadržaji zadržavaju vlastite licence i uvjete uporabe. [Po potrebi postavite poveznicu na zahvale i izvore.]
+**Status licence:** Nije dodjeljena licenca koja dopušta javnu ponovnu uporabu.
 
 <a id="ai-usage"></a>
+
 ## Uporaba umjetne inteligencije [![AI Usage: Disclosed](https://img.shields.io/badge/AI%20Usage-Disclosed-blue.svg)](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf)
 
 Ovaj projekt slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencije](https://www.fer.unizg.hr/_download/repository/Policy%20on%20the%20appropriate%20use%20of%20artificial%20intelligence%20at%20the%20faculty%20of%20electrical%20engineering%20and%20computing%5B1%5D.pdf).
@@ -122,6 +109,7 @@ Ovaj projekt slijedi FER-ova [pravila o primjerenoj uporabi umjetne inteligencij
 [Ako je za ovaj projekt potreban detaljniji zapis uporabe umjetne inteligencije, postavite poveznicu na njegovo jedinstveno mjerodavno mjesto u dokumentaciji.]
 
 <a id="code-of-conduct-and-support"></a>
+
 ## Kodeks ponašanja i podrška [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md)
 
 Od članova tima očekuje se pridržavanje **Kodeksa ponašanja studenata** Fakulteta elektrotehnike i računarstva Sveučilišta u Zagrebu, pravila timskog rada na kolegiju i [Etičkog kodeksa IEEE-a](https://www.ieee.org/about/corporate/governance/p7-8.html). [Postavite poveznicu na `CODE_OF_CONDUCT.md` ako se ta datoteka koristi u vašem repozitoriju.]
